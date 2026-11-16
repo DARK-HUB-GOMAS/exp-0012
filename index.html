@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0B0C14">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Cpath d=%22M16 3L27 11L25 25L16 30L7 25L5 11Z%22 fill=%22%235969C9%22/%3E%3C/svg%3E">
+<title>Expediente N.° 001-2026 · Salas c. Méndez</title>
+<style>
+/* =====================================================================
+   EL EXPEDIENTE — página previa a PROJECT ARCHIVE (un solo archivo).
+   Tres diligencias cortas → sello → se entrega la contraseña del archivo.
+   Ajustes en el bloque CONFIG del script (al final).
+   ===================================================================== */
+:root{
+  --bg:#0B0C14;--bg2:#111426;--s1:#191D35;--s2:#222944;--bd:#343B58;--bd2:#454E73;
+  --ind:#5969C9;--blu:#7297F5;--vio:#9277D8;--warm:#D59A72;--gold:#F2C66D;
+  --tx:#F5F3F8;--tx2:#B5B8CA;--tx3:#8B8FA8;--ok:#86C9AE;--err:#E58F8F;
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  --ease:cubic-bezier(.2,.7,.1,1);--r:16px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:var(--bg);color:var(--tx);-webkit-text-size-adjust:100%}
+body{font-family:var(--sans);line-height:1.55;min-height:100dvh;overflow-x:hidden}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--blu);outline-offset:3px;border-radius:8px}
+
+/* ---------- fondo: retícula en perspectiva y estructuras lejanas ---------- */
+.bg{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;
+  background:radial-gradient(120% 70% at 50% 0%,#171B38 0%,var(--bg) 62%)}
+.bg svg{position:absolute;inset:0;width:100%;height:100%}
+.bg .grid{animation:gridMove 9s linear infinite}
+@keyframes gridMove{to{transform:translateY(40px)}}
+.bg .float{animation:floaty 9s ease-in-out infinite alternate}
+@keyframes floaty{to{transform:translateY(-10px)}}
+.bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,12,20,.15),rgba(11,12,20,.75) 55%,rgba(11,12,20,.95))}
+
+/* ---------- estructura ---------- */
+.app{position:relative;z-index:1;min-height:100dvh;display:flex;flex-direction:column;
+  padding:calc(1rem + env(safe-area-inset-top)) clamp(1.1rem,5vw,2rem) calc(1rem + env(safe-area-inset-bottom));max-width:40rem;margin:0 auto}
+.top{display:flex;align-items:center;justify-content:space-between;gap:1rem;font:600 .68rem/1.4 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--tx3)}
+.top b{color:var(--tx2);font-weight:600}
+.steps{display:flex;gap:.4rem}
+.steps i{width:1.6rem;height:4px;border-radius:4px;background:var(--bd);transition:background .5s var(--ease),width .5s var(--ease)}
+.steps i.on{background:var(--blu);width:2.2rem}
+.steps i.done{background:var(--ok)}
+.screen{flex:1;display:flex;flex-direction:column;justify-content:center;padding:1.6rem 0 1rem;animation:scrIn .6s var(--ease) both}
+.screen.out{animation:scrOut .28s ease forwards}
+@keyframes scrIn{from{opacity:0;transform:translateY(16px);filter:blur(4px)}}
+@keyframes scrOut{to{opacity:0;transform:translateY(-12px);filter:blur(4px)}}
+.eyebrow{font:600 .7rem/1.4 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--blu);margin:0 0 .8rem}
+h1,h2{font-family:var(--serif);font-weight:400;letter-spacing:-.01em;margin:0 0 .9rem}
+h1{font-size:clamp(2rem,1.4rem + 3.2vw,2.9rem);line-height:1.1}
+h2{font-size:clamp(1.5rem,1.2rem + 1.8vw,2rem);line-height:1.18}
+p{margin:0 0 1rem;color:var(--tx2)}
+.lead{font-size:1.06rem}
+.small{font-size:.85rem;color:var(--tx3)}
+.reveal>*{opacity:0;animation:rise .7s var(--ease) forwards}
+.reveal>*:nth-child(1){animation-delay:.05s}.reveal>*:nth-child(2){animation-delay:.15s}.reveal>*:nth-child(3){animation-delay:.25s}
+.reveal>*:nth-child(4){animation-delay:.35s}.reveal>*:nth-child(5){animation-delay:.45s}.reveal>*:nth-child(6){animation-delay:.55s}.reveal>*:nth-child(7){animation-delay:.65s}
+h1:focus,h2:focus{outline:none}
+.reveal>.stk{opacity:1}
+@keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+/* ---------- botones (pulgar derecho: principal ancho a la derecha) ---------- */
+.acts{display:flex;gap:.6rem;margin-top:1.4rem;flex-direction:row-reverse}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;min-height:3.25rem;padding:0 1.4rem;border-radius:999px;border:1px solid var(--bd);
+  background:rgba(25,29,53,.85);color:var(--tx);font-size:1rem;cursor:pointer;text-decoration:none;transition:transform .15s,background .2s,border-color .2s,opacity .2s;-webkit-tap-highlight-color:transparent}
+.btn:active{transform:scale(.97)}
+.btn.primary{flex:1;background:var(--ind);border-color:var(--ind);box-shadow:0 10px 26px -10px rgba(89,105,201,.8)}
+.btn.primary:hover{background:#6576D6}
+.btn:disabled{opacity:.45;cursor:not-allowed;box-shadow:none}
+.btn.ghost{background:none;border-color:transparent;color:var(--tx3);min-height:2.75rem;padding:0 .4rem;font-size:.9rem;text-decoration:underline;text-underline-offset:3px}
+.btn svg{width:18px;height:18px}
+
+/* ---------- carátula del expediente ---------- */
+.folder{position:relative;border:1px solid var(--bd);border-radius:var(--r);background:linear-gradient(160deg,#1A1F3C,#12152B);padding:1.4rem 1.2rem 1.2rem;margin:0 0 1.2rem;overflow:hidden}
+.folder::before{content:"";position:absolute;top:0;left:1.2rem;width:7rem;height:5px;border-radius:0 0 4px 4px;background:var(--warm)}
+.folder dl{display:grid;grid-template-columns:auto 1fr;gap:.35rem .9rem;margin:0;font-size:.9rem}
+.folder dt{font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--tx3);padding-top:.15rem}
+.folder dd{margin:0;color:var(--tx)}
+.folder .stamp-mini{position:absolute;right:-.6rem;top:.8rem;transform:rotate(12deg);font:700 .62rem/1 var(--mono);letter-spacing:.2em;color:var(--warm);border:1.5px solid var(--warm);border-radius:6px;padding:.35rem .5rem;opacity:.8}
+
+/* ---------- diligencia 1: el caso ---------- */
+.case{border-left:3px solid var(--warm);padding:.2rem 0 .2rem 1rem;margin:0 0 1.2rem}
+.case p{color:var(--tx);margin-bottom:.6rem}
+.case .note{font-size:.88rem;color:var(--tx3);font-style:italic}
+.opts{display:grid;gap:.6rem}
+.opt{display:flex;gap:.9rem;align-items:flex-start;width:100%;text-align:left;padding:1rem 1.05rem;border:1px solid var(--bd);border-radius:14px;background:rgba(17,20,38,.85);cursor:pointer;
+  transition:border-color .2s,background .2s,transform .15s}
+.opt:active{transform:scale(.985)}
+.opt .k{flex:none;width:1.8rem;height:1.8rem;border-radius:50%;display:grid;place-items:center;border:1px solid var(--bd2);font:600 .8rem var(--mono);color:var(--tx2)}
+.opt b{display:block;font-weight:600;color:var(--tx)}
+.opt span.d{font-size:.88rem;color:var(--tx3)}
+.opt.ok{border-color:var(--ok);background:rgba(134,201,174,.1)}.opt.ok .k{background:var(--ok);border-color:var(--ok);color:var(--bg)}
+.opt.no{border-color:var(--err);animation:shake .4s}
+@keyframes shake{20%,60%{transform:translateX(-6px)}40%,80%{transform:translateX(6px)}}
+.hint{min-height:1.5rem;font-size:.92rem;color:var(--warm);margin:.9rem 0 0}
+.hint.good{color:var(--ok)}
+
+/* ---------- diligencia 2: ordenar la sentencia ---------- */
+.slots{display:grid;gap:.5rem;margin:0 0 1rem}
+.slot{display:flex;align-items:center;gap:.8rem;min-height:3.6rem;padding:.6rem .9rem;border:1.5px dashed var(--bd2);border-radius:14px;background:rgba(11,12,20,.5);transition:border-color .25s,background .25s}
+.slot .n{flex:none;font:600 .8rem var(--mono);color:var(--tx3);width:1.4rem}
+.slot.filled{border-style:solid;border-color:var(--ind);background:rgba(89,105,201,.12);cursor:pointer}
+.slot.filled .pc{animation:pop .35s var(--ease)}
+.slot.right{border-color:var(--ok);background:rgba(134,201,174,.1)}
+.slot.wrong{border-color:var(--err);animation:shake .4s}
+.slot .pc b{display:block;font-weight:600}.slot .pc span{font-size:.84rem;color:var(--tx3)}
+.slot .empty{font-size:.88rem;color:var(--tx3)}
+@keyframes pop{from{transform:scale(.92);opacity:0}}
+.pieces{display:grid;gap:.5rem}
+.piece{width:100%;text-align:left;padding:.85rem 1rem;border:1px solid var(--bd);border-radius:14px;background:var(--s1);cursor:pointer;transition:opacity .25s,transform .15s}
+.piece:active{transform:scale(.98)}
+.piece b{display:block;font-weight:600}.piece span{font-size:.84rem;color:var(--tx3)}
+.piece.used{opacity:0;pointer-events:none;transform:scale(.96);height:0;padding:0;border:0;margin:-.25rem 0}
+.tiny{font-size:.8rem;color:var(--tx3);margin:.4rem 0 0}
+
+/* ---------- diligencia 3: contrato y firma ---------- */
+.contract{border:1px solid var(--bd);border-radius:var(--r);background:#F3EFE6;color:#23263A;padding:1.2rem 1.1rem;margin:0 0 1rem;max-height:46dvh;overflow:auto;font-family:var(--serif);box-shadow:0 18px 40px -20px rgba(0,0,0,.7)}
+.contract h3{font-family:var(--serif);font-weight:600;font-size:1.05rem;text-align:center;letter-spacing:.06em;text-transform:uppercase;margin:0 0 .2rem}
+.contract .sub{text-align:center;font-size:.8rem;color:#6B6F85;margin:0 0 1rem;font-family:var(--sans)}
+.contract ol{margin:0;padding:0;list-style:none;counter-reset:c}
+.contract li{counter-increment:c;margin:0 0 .75rem;font-size:.97rem;line-height:1.5}
+.contract li::before{content:counter(c,upper-roman) ". ";font-weight:700;color:#7A5A44}
+.contract .sig-l{margin:1rem 0 0;font-size:.8rem;color:#6B6F85;font-family:var(--sans)}
+.sigbox{position:relative;border-radius:14px;background:#FBF9F4;border:1px solid #D8D2C4;height:9.5rem;touch-action:none;overflow:hidden}
+.sigbox canvas{position:absolute;inset:0;width:100%;height:100%;cursor:crosshair}
+.sigbox .line{position:absolute;left:1rem;right:1rem;bottom:2.1rem;height:1px;background:#C9C1B0}
+.sigbox .ph{position:absolute;left:1rem;bottom:.6rem;font-size:.78rem;color:#9A927F;pointer-events:none;font-family:var(--sans)}
+.sigrow{display:flex;justify-content:space-between;align-items:center;margin:.4rem 0 0}
+.stamp{position:absolute;left:50%;top:50%;width:9rem;height:9rem;margin:-4.5rem 0 0 -4.5rem;border-radius:50%;border:3px double #B5452F;color:#B5452F;display:grid;place-items:center;text-align:center;
+  font:700 .78rem/1.25 var(--mono);letter-spacing:.14em;opacity:0;transform:scale(2.4) rotate(-24deg);pointer-events:none;mix-blend-mode:multiply}
+.stamp.on{animation:stamp .5s cubic-bezier(.3,1.6,.5,1) forwards}
+@keyframes stamp{to{opacity:.9;transform:scale(1) rotate(-12deg)}}
+
+/* ---------- compuerta y entrega ---------- */
+.gate{position:fixed;inset:0;z-index:20;pointer-events:none}
+.gate .door{position:absolute;top:0;bottom:0;width:50%;background:var(--bg)}
+.gate .l{left:0;box-shadow:inset -1px 0 0 rgba(114,151,245,.5);transform:translateX(-101%)}
+.gate .r{right:0;transform:translateX(101%)}
+.gate.close .l,.gate.close .r{transform:none;transition:transform .55s cubic-bezier(.7,0,.2,1)}
+.gate.open .l{transform:translateX(-101%);transition:transform .8s cubic-bezier(.7,0,.2,1) .15s}
+.gate.open .r{transform:translateX(101%);transition:transform .8s cubic-bezier(.7,0,.2,1) .15s}
+.gate .seam{position:absolute;left:50%;top:0;bottom:0;width:2px;margin-left:-1px;background:linear-gradient(transparent,#9DB5FF 30%,#fff 50%,#9DB5FF 70%,transparent);opacity:0;box-shadow:0 0 18px 2px rgba(114,151,245,.6)}
+.gate.open .seam{animation:seam .9s ease}
+@keyframes seam{30%{opacity:1}100%{opacity:0}}
+.mech{position:absolute;left:50%;top:50%;width:8rem;height:8rem;margin:-4rem 0 0 -4rem;opacity:0}
+.gate.close .mech{opacity:1;transition:opacity .3s .35s}
+.gate.close .mech .ra{animation:spin 1.4s cubic-bezier(.2,.7,.1,1) .35s both}
+.gate.close .mech .rb{animation:spinB 1.3s cubic-bezier(.2,.7,.1,1) .4s both}
+.gate.close .mech .core{animation:core .5s ease 1.3s both}
+.mech *{transform-box:fill-box;transform-origin:center}
+@keyframes spin{from{transform:rotate(30deg)}to{transform:rotate(360deg)}}
+@keyframes spinB{from{transform:rotate(-40deg)}to{transform:rotate(-240deg)}}
+@keyframes core{from{fill:#2B3260}to{fill:#F5F3F8}}
+
+.prize{text-align:center}
+.keycard{position:relative;margin:1.2rem auto 1rem;padding:1.3rem 1.2rem 1.1rem;max-width:24rem;border-radius:var(--r);border:1px solid var(--bd2);
+  background:linear-gradient(160deg,#1C2246,#12152B);box-shadow:0 0 0 1px rgba(114,151,245,.12),0 24px 50px -20px rgba(89,105,201,.55);overflow:hidden}
+.keycard::after{content:"";position:absolute;inset:-40% -60%;background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.09) 50%,transparent 60%);animation:shine 3.2s ease-in-out 1s infinite}
+@keyframes shine{from{transform:translateX(-40%)}to{transform:translateX(40%)}}
+.keycard .lbl{font:600 .66rem/1.4 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--tx3);margin-bottom:.5rem}
+.keycard .pw{font:600 clamp(1.3rem,1rem + 2.4vw,1.75rem)/1.2 var(--mono);letter-spacing:.06em;color:var(--tx);word-break:break-all;user-select:all;-webkit-user-select:all}
+.copy{margin-top:.9rem;min-height:2.75rem;font-size:.92rem}
+.prize .acts{flex-direction:column}
+.prize .acts .btn{width:100%}
+
+/* ---------- sticker ---------- */
+.stk{display:block;width:5.4rem;height:5.4rem;margin:0 0 .8rem;filter:drop-shadow(0 6px 14px rgba(0,0,0,.4));animation:stkIn .7s var(--ease) .2s both,stkFloat 6s ease-in-out 1.2s infinite}
+.prize .stk{margin:0 auto .6rem}
+@keyframes stkIn{from{opacity:0;transform:translateY(.6rem) rotate(-14deg) scale(.85)}}
+@keyframes stkFloat{50%{transform:translateY(-5px) rotate(2deg)}}
+
+.toast{position:fixed;left:50%;top:calc(1rem + env(safe-area-inset-top));transform:translate(-50%,-1rem);opacity:0;z-index:30;padding:.7rem 1.1rem;border-radius:999px;
+  background:var(--s2);border:1px solid var(--bd2);font-size:.9rem;transition:opacity .3s,transform .3s;pointer-events:none;max-width:calc(100% - 2rem)}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+
+@media (min-width:700px){.app{padding-top:2rem}.screen{padding-top:2.5rem}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+
+/* ===================== caso completo ===================== */
+.steps i{width:1.1rem}.steps i.on{width:1.7rem}
+.phase{font:600 .7rem/1.4 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--warm);margin:0 0 .5rem}
+.story{border-left:3px solid var(--warm);padding:.1rem 0 .1rem 1rem;margin:0 0 1.2rem}
+.story p{color:var(--tx);margin:0 0 .7rem}
+.story p:last-child{margin:0}
+.parties{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin:0 0 1.2rem}
+.party{border:1px solid var(--bd);border-radius:14px;padding:.8rem .9rem;background:rgba(17,20,38,.8)}
+.party small{display:block;font:600 .62rem/1.4 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--tx3);margin-bottom:.25rem}
+.party b{display:block;font-weight:600}.party span{font-size:.82rem;color:var(--tx3)}
+/* pruebas */
+.evs{display:grid;gap:.6rem;margin:0 0 1rem}
+.ev{width:100%;text-align:left;display:flex;gap:.9rem;align-items:center;padding:.9rem 1rem;border:1px solid var(--bd);border-radius:14px;background:rgba(17,20,38,.85);cursor:pointer;transition:border-color .2s,background .2s}
+.ev .tag{flex:none;width:2.2rem;height:2.2rem;border-radius:10px;display:grid;place-items:center;font:700 .85rem var(--mono);background:var(--s2);color:var(--tx2)}
+.ev b{display:block;font-weight:600}.ev span.d{font-size:.84rem;color:var(--tx3)}
+.ev.seen{border-color:rgba(134,201,174,.55)}.ev.seen .tag{background:var(--ok);color:var(--bg)}
+.ev[aria-expanded="true"]{border-color:var(--blu)}
+.evbody{overflow:hidden;max-height:0;transition:max-height .45s var(--ease)}
+.evbody.open{max-height:40rem}
+.evin{margin:.2rem 0 .4rem;padding:1rem;border-radius:14px;background:#F3EFE6;color:#23263A;font-size:.92rem}
+.chat{display:grid;gap:.45rem;font-family:var(--sans)}
+.bub{max-width:84%;padding:.55rem .8rem;border-radius:14px;line-height:1.4}
+.bub.me{justify-self:end;background:#DCF2D3;border-bottom-right-radius:4px}
+.bub.her{justify-self:start;background:#fff;border-bottom-left-radius:4px}
+.bub small{display:block;font-size:.68rem;color:#7B7F90;margin-top:.15rem;text-align:right}
+.chatday{justify-self:center;font-size:.7rem;color:#7B7F90;background:#E8E2D4;border-radius:8px;padding:.15rem .6rem}
+.photo{position:relative;height:11rem;border-radius:10px;background:linear-gradient(160deg,#2A2F45,#14172A);overflow:hidden}
+.photo .scr{position:absolute;inset:12% 14% 22%;border-radius:6px;background:linear-gradient(135deg,#2E3A6B,#1A1E36)}
+.photo .scr::after{content:"";position:absolute;inset:0;background:
+  linear-gradient(32deg,transparent 48%,rgba(255,255,255,.8) 49%,transparent 50%),
+  linear-gradient(-58deg,transparent 47%,rgba(255,255,255,.7) 48%,transparent 49%),
+  linear-gradient(80deg,transparent 60%,rgba(255,255,255,.6) 61%,transparent 62%)}
+.photo .base{position:absolute;left:8%;right:8%;bottom:12%;height:8%;border-radius:0 0 8px 8px;background:#3A4060}
+.cap{font-size:.82rem;color:#5A5E70;margin:.6rem 0 0}
+.receipt{font-family:var(--mono);font-size:.82rem;line-height:1.6}
+.receipt .row{display:flex;justify-content:space-between;border-bottom:1px dashed #C9C1B0;padding:.2rem 0}
+.receipt .tot{font-weight:700;border-bottom:0}
+/* pregunta */
+.qcard{margin:1.2rem 0 0}
+.qcard .qq{font-family:var(--serif);font-size:1.25rem;line-height:1.3;color:var(--tx);margin:0 0 .9rem}
+.explain{display:none;margin:.9rem 0 0;padding:.9rem 1rem;border-radius:14px;border:1px solid rgba(134,201,174,.45);background:rgba(134,201,174,.08);color:var(--tx);font-size:.93rem}
+.explain.on{display:block;animation:rise .45s var(--ease)}
+.explain b{color:var(--ok)}
+/* fallo */
+.fallo{border:1px solid var(--bd);border-radius:var(--r);background:#F3EFE6;color:#23263A;padding:1.1rem 1rem;font-family:var(--serif);box-shadow:0 18px 40px -20px rgba(0,0,0,.7)}
+.fallo h3{font-weight:600;text-align:center;letter-spacing:.08em;text-transform:uppercase;font-size:1rem;margin:0 0 .2rem}
+.fallo .sub{text-align:center;font-size:.78rem;color:#6B6F85;margin:0 0 1rem;font-family:var(--sans)}
+.fline{margin:0 0 1rem}
+.fline>p{margin:0 0 .45rem;color:#23263A;font-size:.97rem}
+.fline>p b{color:#7A5A44}
+.seg{display:flex;flex-wrap:wrap;gap:.35rem}
+.seg button{flex:1 1 auto;min-height:2.6rem;padding:.4rem .7rem;border-radius:10px;border:1px solid #CFC7B5;background:#FBF9F4;color:#2F3347;font:500 .86rem var(--sans);cursor:pointer;transition:background .2s,border-color .2s,color .2s}
+.seg button[aria-pressed="true"]{background:#2F3A7A;border-color:#2F3A7A;color:#fff}
+.fline.bad .seg{animation:shake .4s}.fline.bad .why{display:block}
+.fline.good .seg button[aria-pressed="true"]{background:#2E7D5B;border-color:#2E7D5B}
+.why{display:none;font:400 .82rem/1.45 var(--sans);color:#9A3B2C;margin:.45rem 0 0}
+.score{display:inline-flex;gap:.5rem;align-items:center;margin:.4rem 0 1rem;padding:.45rem .9rem;border-radius:999px;border:1px solid var(--bd2);font:600 .78rem var(--mono);letter-spacing:.08em;color:var(--tx2)}
+.expn{white-space:nowrap}.steps{gap:.3rem}.steps i{width:.9rem}.steps i.on{width:1.4rem}
+.receipt .row span:last-child{white-space:nowrap;padding-left:.6rem}
+.fline.bad{border-left:3px solid #C0533F;padding-left:.6rem}
+.fallo p{color:#23263A}.fallo .why{color:#B23A2A}
+</style>
+</head>
+<body>
+<div class="bg" aria-hidden="true">
+  <svg viewBox="0 0 400 800" preserveAspectRatio="xMidYMax slice">
+    <defs><linearGradient id="fade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7297F5" stop-opacity="0"/><stop offset="1" stop-color="#7297F5" stop-opacity=".35"/></linearGradient></defs>
+    <g class="float" fill="#1B2042" stroke="#2C3462" stroke-width="1">
+      <rect x="22" y="250" width="36" height="250"/><rect x="78" y="300" width="22" height="200"/><rect x="300" y="230" width="40" height="270"/><rect x="350" y="320" width="24" height="180"/>
+      <rect x="120" y="360" width="14" height="140"/><rect x="262" y="340" width="16" height="160"/>
+    </g>
+    <g stroke="url(#fade)" stroke-width="1" fill="none">
+      <g class="grid"><path d="M-200 500H600M-200 540H600M-200 590H600M-200 650H600M-200 720H600M-200 800H600M-200 880H600"/></g>
+      <path d="M200 500L-300 900M200 500L-100 900M200 500L60 900M200 500L200 900M200 500L340 900M200 500L500 900M200 500L700 900"/>
+    </g>
+    <circle cx="200" cy="500" r="120" fill="#5969C9" opacity=".08"/>
+  </svg>
+</div>
+
+<div class="app">
+  <header class="top"><span class="expn"><b>Exp.</b> 001-2026</span><span class="steps" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></span></header>
+  <main id="main" aria-live="polite"></main>
+</div>
+
+<div class="gate" id="gate" aria-hidden="true">
+  <div class="door l"></div><div class="door r"></div><div class="seam"></div>
+  <svg class="mech" viewBox="-60 -60 120 120">
+    <circle r="56" fill="none" stroke="#343B58" stroke-width="1"/>
+    <circle class="ra" r="48" fill="none" stroke="#7297F5" stroke-width="4" stroke-dasharray="40 10.27"/>
+    <circle class="rb" r="34" fill="none" stroke="#9277D8" stroke-width="6" stroke-dasharray="12 23.6"/>
+    <circle class="core" r="9" fill="#2B3260"/>
+  </svg>
+</div>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+(function () {
+  'use strict';
+
+  /* =================== CONFIG: cámbialo antes de publicar =================== */
+  var CONFIG = {
+    nombre: 'Yurema',                       // solo aparece en el saludo inicial
+    password: 'archive-2026',               // la misma contraseña que usaste en tools/set-password.js
+    formUrl: ' https://dark-hub-gomas.github.io/ax-7421/'   // enlace al formulario
+  };
+  /* ========================================================================= */
+
+  var main = document.getElementById('main'), steps = document.querySelectorAll('.steps i'), toastEl = document.getElementById('toast');
+  var REDUCED = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var firstTry = 0, totalChecks = 0;
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function toast(t, ms) { toastEl.textContent = t; toastEl.classList.add('on'); clearTimeout(toast.t); toast.t = setTimeout(function () { toastEl.classList.remove('on'); }, ms || 2400); }
+  var ARROW = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+  function setStep(n) { steps.forEach(function (s, i) { s.className = i < n - 1 ? 'done' : i === n - 1 ? 'on' : ''; }); }
+  function show(html, after) {
+    var cur = main.firstElementChild;
+    var put = function () { main.innerHTML = '<section class="screen">' + html + '</section>'; window.scrollTo(0, 0); var h = main.querySelector('h1,h2'); if (h) { h.tabIndex = -1; h.focus({ preventScroll: true }); } if (after) after(); };
+    if (cur && !REDUCED) { cur.classList.add('out'); setTimeout(put, 260); } else put();
+  }
+  function nextBtn(label, id) { return '<div class="acts" id="' + (id || 'nextWrap') + '" hidden><button class="btn primary" id="' + (id ? id + 'Btn' : 'next') + '">' + (label || 'Continuar') + ' ' + ARROW + '</button></div>'; }
+
+  var JUEZ = '<svg class="stk" viewBox="0 0 100 100" aria-hidden="true">' +
+    '<g fill="#ECEAF4" stroke="#ECEAF4" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"><path d="M42 22L64 38L60 70L42 80L24 70L20 38Z"/><path d="M62 48L84 26" stroke-width="12"/><rect x="72" y="10" width="22" height="12" rx="3" transform="rotate(45 83 16)"/><rect x="14" y="84" width="40" height="8" rx="3"/></g>' +
+    '<rect x="14" y="84" width="40" height="7" rx="3" fill="#7A5A44"/>' +
+    '<path d="M42 22L64 38L60 70L42 80L24 70L20 38Z" fill="#5969C9"/><path d="M42 22L64 38L42 46Z" fill="#7297F5"/><path d="M20 38L42 22L42 46Z" fill="#7E8FEA"/><path d="M24 70L42 80L60 70L42 62Z" fill="#9277D8" opacity=".7"/>' +
+    '<path d="M62 48L82 28" stroke="#C9935F" stroke-width="5" stroke-linecap="round"/><rect x="72" y="10" width="22" height="12" rx="3" fill="#8A5E3E" transform="rotate(45 83 16)"/>' +
+    '<ellipse cx="35" cy="50" rx="2.6" ry="3" fill="#14162A"/><ellipse cx="49" cy="50" rx="2.6" ry="3" fill="#14162A"/><path d="M37 60q5 3 10 0" stroke="#14162A" stroke-width="2.2" fill="none" stroke-linecap="round"/>' +
+    '<path d="M30 44l8 1M54 44l-8 1" stroke="#14162A" stroke-width="2" stroke-linecap="round"/></svg>';
+
+  /* =====================================================================
+     EL CASO: «Salas c. Méndez — La cámara que fue a la playa»
+     Caso ficticio. Referencias: Código Civil (CC) y Código Procesal Civil (CPC) del Perú.
+     ===================================================================== */
+  var Q = {
+    q1: { q: '¿Qué contrato celebraron Bruno y Carla?', ok: 'b',
+      o: [['a', 'Arrendamiento', 'Se cede el uso de un bien a cambio de una renta.'], ['b', 'Comodato', 'Se entrega gratis un bien no consumible para usarlo y devolverlo.'], ['c', 'Mutuo', 'Se entregan bienes consumibles y se devuelven otros iguales.']],
+      hint: { a: 'Revisa el chat: ¿Bruno le cobró algo?', c: 'La cámara no se consume con el uso, y Bruno quiere la misma cámara.' },
+      exp: '<b>Comodato.</b> El comodante entrega gratuitamente un bien no consumible para que se use por cierto tiempo o para cierto fin, y luego se devuelva (CC, art. 1728). No hubo renta, así que no es arrendamiento; y la cámara no se consume, así que no es mutuo.' },
+    q2: { q: 'Bruno acude a un abogado. ¿Qué debería pedir en su demanda?', ok: 'b',
+      o: [['a', 'Solo el valor total de la cámara', 'S/ 3 500, y que Carla se quede con ella.'], ['b', 'Restitución e indemnización', 'Que le devuelvan la cámara y le paguen la reparación.'], ['c', 'Resolver una compraventa', 'Deshacer la venta de la cámara.']],
+      hint: { a: 'Bruno no quiere venderla: quiere recuperarla.', c: 'Nunca hubo venta: Bruno no recibió ningún precio.' },
+      exp: '<b>Restitución e indemnización.</b> Lo que Bruno quiere es recuperar su cámara y que se le repare el daño. Pedir solo el valor sería renunciar al bien, y no existe ninguna compraventa que resolver.' },
+    q3: { q: 'Como prueba, Bruno quiere presentar capturas del chat. ¿Puede hacerlo?', ok: 'b',
+      o: [['a', 'No', 'Solo valen documentos firmados ante notario.'], ['b', 'Sí', 'Pueden ofrecerse como medio probatorio y el juez las valora con las demás pruebas.'], ['c', 'Solo si Carla está de acuerdo', 'Necesita su autorización para usarlas.']],
+      hint: { a: 'En el proceso civil, documento es cualquier objeto que sirva para acreditar un hecho.', c: 'La otra parte puede cuestionar una prueba, pero no decide si se ofrece.' },
+      exp: '<b>Sí.</b> Para el CPC, documento es todo escrito u objeto que sirve para acreditar un hecho; las capturas pueden ofrecerse. Carla podría cuestionarlas, pero el juez las valorará en conjunto con el resto de pruebas.' },
+    q4: { q: 'Que Carla diga que la cámara fue un regalo, ¿qué tipo de defensa es?', ok: 'b',
+      o: [['a', 'Una excepción procesal', 'Ataca la validez de la relación procesal.'], ['b', 'Una defensa de fondo', 'Niega el derecho que Bruno reclama.'], ['c', 'Una tacha', 'Cuestiona la validez de un medio probatorio.']],
+      hint: { a: 'Las excepciones van contra el proceso (incompetencia, falta de legitimidad…), no contra el derecho reclamado.', c: 'La tacha va contra una prueba concreta; aquí Carla discute el derecho de Bruno.' },
+      exp: '<b>Defensa de fondo.</b> Carla no ataca el proceso ni una prueba: discute si Bruno tiene derecho a recuperar la cámara. Las excepciones atacan la relación procesal; la tacha, un medio probatorio.' },
+    q5: { q: '¿Quién tiene que probar que la cámara fue un regalo?', ok: 'b',
+      o: [['a', 'Bruno', 'Porque fue él quien demandó.'], ['b', 'Carla', 'Porque es ella quien afirma un hecho nuevo.'], ['c', 'Nadie', 'El juez presume que hubo regalo.']],
+      hint: { a: 'Bruno prueba su pretensión; pero el «regalo» lo alega otra persona.', c: 'Ningún regalo se presume: alguien tiene que probarlo.' },
+      exp: '<b>Carla.</b> La carga de probar corresponde a quien afirma hechos que configuran su pretensión, o a quien los contradice alegando hechos nuevos (CPC, art. 196). La donación es un hecho nuevo que alega Carla.' },
+    q6: { q: 'Carla dice que el regalo fue «de palabra». La cámara vale S/ 3 500. ¿Es válida esa donación?', ok: 'b',
+      o: [['a', 'Sí', 'La donación de muebles no exige ninguna forma.'], ['b', 'No', 'Por su valor, debía hacerse por escrito de fecha cierta, bajo sanción de nulidad.'], ['c', 'Sí, si hay testigos', 'Dos testigos bastan para darle validez.']],
+      hint: { a: 'Revisa el límite de valor para donar muebles sin formalidad.', c: 'Cuando la ley exige una forma bajo sanción de nulidad, los testigos no la reemplazan.' },
+      exp: '<b>No es válida.</b> Si el valor del mueble supera el 25 % de la UIT, la donación debe constar por escrito de fecha cierta, bajo sanción de nulidad (CC, art. 1624). S/ 3 500 supera ese límite.' },
+    q7: { q: '¿Responde Carla por el lente roto, aunque diga que fue un accidente?', ok: 'b',
+      o: [['a', 'No', 'Los accidentes nunca generan responsabilidad.'], ['b', 'Sí', 'La usó para otro fin y la retuvo pasado el plazo: responde por el deterioro.'], ['c', 'Solo si fue a propósito', 'Bruno tendría que probar que la rompió adrede.']],
+      hint: { a: 'Piensa en para qué se prestó la cámara y para qué se usó.', c: 'Aquí importa el uso distinto y el plazo vencido, no la intención.' },
+      exp: '<b>Sí responde.</b> El comodatario debe usar el bien solo para el uso convenido y devolverlo a tiempo. Si lo emplea para otro fin o lo retiene más allá del plazo, responde por el deterioro aunque no sea por su culpa. La cámara era para una boda, no para la playa.' },
+    q8: { q: 'Carla no está conforme con la sentencia. ¿Qué recurso debe interponer?', ok: 'b',
+      o: [['a', 'Casación', 'Directamente ante la Corte Suprema.'], ['b', 'Apelación', 'Para que el superior revise la sentencia.'], ['c', 'Queja', 'Contra la sentencia que no le gustó.']],
+      hint: { a: 'La casación no se usa contra una sentencia de primera instancia.', c: 'La queja procede cuando se deniega un recurso, no contra la sentencia en sí.' },
+      exp: '<b>Apelación.</b> Busca que el órgano superior revise la sentencia de primera instancia. La casación procede contra lo resuelto en segunda instancia, y la queja, cuando se deniega un recurso.' }
+  };
+
+  function optBtn(o) { return '<button class="opt" data-k="' + o[0] + '"><span class="k">' + o[0].toUpperCase() + '</span><span><b>' + o[1] + '</b><span class="d">' + o[2] + '</span></span></button>'; }
+  function qHTML(id) { var d = Q[id]; return '<div class="qcard" id="' + id + '"><p class="qq">' + d.q + '</p><div class="opts" role="group">' + d.o.map(optBtn).join('') + '</div><p class="hint" aria-live="polite"></p><div class="explain">' + d.exp + '</div></div>'; }
+  // Conecta una pregunta; done() se llama al acertar.
+  function wireQ(id, done) {
+    var d = Q[id], box = document.getElementById(id), hint = box.querySelector('.hint'), tries = 0; totalChecks++;
+    box.querySelectorAll('.opt').forEach(function (b) {
+      b.onclick = function () {
+        if (box.dataset.ok) return;
+        if (b.dataset.k === d.ok) {
+          box.dataset.ok = '1'; b.classList.add('ok'); hint.textContent = ''; if (!tries) firstTry++;
+          box.querySelectorAll('.opt').forEach(function (x) { if (x !== b) x.style.opacity = '.45'; });
+          box.querySelector('.explain').classList.add('on');
+          setTimeout(function () { box.querySelector('.explain').scrollIntoView({ behavior: REDUCED ? 'auto' : 'smooth', block: 'nearest' }); }, 120);
+          done();
+        } else {
+          tries++; b.classList.remove('no'); void b.offsetWidth; b.classList.add('no');
+          hint.textContent = d.hint[b.dataset.k] || 'Mmm, revisa los hechos.';
+        }
+      };
+    });
+  }
+  // Pantalla con contexto + una o varias preguntas en orden (la siguiente aparece al acertar la anterior)
+  function phase(n, eyebrow, title, intro, ids, next, nextLabel) {
+    setStep(n);
+    show('<div class="reveal"><p class="phase">Fase ' + n + ' de 6 · ' + eyebrow + '</p><h2>' + title + '</h2>' + intro + '</div>' +
+      ids.map(function (id, i) { return '<div class="qslot" data-i="' + i + '"' + (i ? ' hidden' : '') + '>' + qHTML(id) + '</div>'; }).join('') + nextBtn(nextLabel), function () {
+        ids.forEach(function (id, i) {
+          wireQ(id, function () {
+            var nx = main.querySelector('.qslot[data-i="' + (i + 1) + '"]');
+            if (nx) { setTimeout(function () { nx.hidden = false; nx.scrollIntoView({ behavior: REDUCED ? 'auto' : 'smooth', block: 'start' }); }, 900); }
+            else { var w = document.getElementById('nextWrap'); w.hidden = false; document.getElementById('next').onclick = next; }
+          });
+        });
+      });
+  }
+
+  /* ---------- 0 · Carátula ---------- */
+  function intro() {
+    setStep(0);
+    show('<div class="reveal">' + JUEZ +
+      '<p class="eyebrow">Antes de entrar al archivo</p>' +
+      '<h1>Hola, ' + esc(CONFIG.nombre) + '. Hay un expediente esperando a su jueza.</h1>' +
+      '<p class="lead">Para recibir la contraseña del archivo tienes que llevar este caso de principio a fin: revisar las pruebas, resolver las cuestiones del proceso y firmar la sentencia.</p>' +
+      '<div class="folder"><span class="stamp-mini">PRIORIDAD</span><dl>' +
+      '<dt>Materia</dt><dd>Restitución de bien e indemnización</dd><dt>Demandante</dt><dd>Bruno Salas</dd><dt>Demandada</dt><dd>Carla Méndez</dd><dt>Estado</dt><dd>Pendiente de resolver</dd></dl></div>' +
+      '<p class="small">Caso ficticio. Seis fases, unos diez minutos. Puedes equivocarte: el juzgado da pistas.</p>' +
+      '<div class="acts"><button class="btn primary" id="go">Abrir el expediente ' + ARROW + '</button></div>' +
+      '<p style="text-align:center;margin-top:.6rem"><button class="btn ghost" id="skip">Ya tengo la contraseña</button></p></div>', function () {
+        document.getElementById('go').onclick = f1;
+        document.getElementById('skip').onclick = function () { location.href = CONFIG.formUrl; };
+      });
+  }
+
+  /* ---------- 1 · Los hechos y las pruebas ---------- */
+  var EVID = [
+    { k: 'A', t: 'Chat de WhatsApp', d: 'Conversación del 2 de mayo', body: '<div class="chat"><span class="chatday">2 de mayo</span>' +
+      '<div class="bub me">Te presto la cámara para la boda de tu prima. Me la devuelves el lunes, ¿ya?<small>18:02</small></div>' +
+      '<div class="bub her">Sí, el lunes sin falta. ¡Gracias! Te debo una<small>18:05</small></div>' +
+      '<div class="bub me">Cuídala, el lente es lo más caro<small>18:06</small></div>' +
+      '<span class="chatday">24 de mayo</span><div class="bub me">¿Y mi cámara?<small>09:14</small></div><div class="bub her">Ya te la llevo, estuve de viaje<small>21:47</small></div></div>' },
+    { k: 'B', t: 'Fotografía del daño', d: 'Estado en que volvió la cámara', body: '<div class="photo"><div class="scr"></div><div class="base"></div></div>' +
+      '<p class="cap">Lente fisurado. El técnico encontró arena en el mecanismo de enfoque y una etiqueta de un hotel de playa en el estuche.</p>' },
+    { k: 'C', t: 'Boleta de reparación', d: 'Servicio técnico autorizado', body: '<div class="receipt"><div class="row"><span>Cambio de lente frontal</span><span>S/ 520.00</span></div><div class="row"><span>Limpieza interna (arena)</span><span>S/ 180.00</span></div>' +
+      '<div class="row"><span>Calibración de enfoque</span><span>S/ 80.00</span></div><div class="row tot"><span>Total reparación</span><span>S/ 780.00</span></div>' +
+      '<div class="row tot" style="color:#6B6F85;font-weight:400"><span>Valor de la cámara (factura de compra)</span><span>S/ 3 500.00</span></div></div>' }
+  ];
+  function f1() {
+    setStep(1);
+    var seen = {};
+    show('<div class="reveal"><p class="phase">Fase 1 de 6 · Los hechos</p><h2>La cámara que fue a la playa</h2>' +
+      '<div class="parties"><div class="party"><small>Demandante</small><b>Bruno Salas</b><span>Fotógrafo aficionado</span></div><div class="party"><small>Demandada</small><b>Carla Méndez</b><span>Organizadora de eventos</span></div></div>' +
+      '<div class="story"><p>Bruno presta su cámara a Carla para que fotografíe la boda de su prima. No le cobra nada; acuerdan que se la devolverá el lunes siguiente.</p>' +
+      '<p>La boda pasa. Carla no devuelve la cámara: se la lleva de viaje a la playa. Tres semanas después aparece con el lente roto y arena en lugares que ni el fabricante conocía.</p>' +
+      '<p>Bruno quiere su cámara de vuelta y que le paguen la reparación.</p></div>' +
+      '<p><b style="color:var(--tx)">Revisa las tres pruebas</b> antes de calificar el caso.</p>' +
+      '<div class="evs">' + EVID.map(function (e) { return '<div><button class="ev" data-k="' + e.k + '" aria-expanded="false"><span class="tag">' + e.k + '</span><span><b>' + e.t + '</b><span class="d">' + e.d + '</span></span></button><div class="evbody"><div class="evin">' + e.body + '</div></div></div>'; }).join('') + '</div></div>' +
+      '<div class="qslot" id="q1slot" hidden>' + qHTML('q1') + '</div>' + nextBtn(), function () {
+        main.querySelectorAll('.ev').forEach(function (b) {
+          b.onclick = function () {
+            var body = b.nextElementSibling, open = b.getAttribute('aria-expanded') !== 'true';
+            b.setAttribute('aria-expanded', open); body.classList.toggle('open', open); b.classList.add('seen'); seen[b.dataset.k] = 1;
+            if (Object.keys(seen).length === 3) { var s = document.getElementById('q1slot'); if (s.hidden) { s.hidden = false; toast('Pruebas revisadas'); } }
+          };
+        });
+        wireQ('q1', function () { var w = document.getElementById('nextWrap'); w.hidden = false; document.getElementById('next').onclick = f2; });
+      });
+  }
+
+  /* ---------- 2 · La demanda ---------- */
+  function f2() {
+    phase(2, 'La demanda', 'Bruno va a juicio',
+      '<div class="story"><p>Carla devolvió la cámara rota… y luego se la volvió a llevar «para arreglarla ella misma». Desde entonces no contesta. Bruno decide demandar.</p></div>',
+      ['q2', 'q3'], f3);
+  }
+  /* ---------- 3 · La contestación ---------- */
+  function f3() {
+    phase(3, 'La contestación', 'Carla se defiende',
+      '<div class="story"><p>Carla contesta la demanda: «La cámara fue un regalo. Bruno me dijo: quédatela, te queda mejor que a mí».</p><p>Y añade que el lente «se rompió solo».</p></div>',
+      ['q4', 'q5'], f4);
+  }
+  /* ---------- 4 · El fondo ---------- */
+  function f4() {
+    phase(4, 'El fondo del asunto', 'Lo que dice la ley',
+      '<div class="story"><p>En la audiencia, Carla no presenta ningún documento del supuesto regalo. Solo insiste en que fue «de palabra».</p></div>',
+      ['q6', 'q7'], f5);
+  }
+
+  /* ---------- 5 · Redactar y firmar la sentencia ---------- */
+  var FALLO = [
+    { id: 'f1', p: 'La demanda se declara:', o: ['Fundada', 'Infundada', 'Improcedente'], ok: 0, why: 'Improcedente se usa cuando hay un defecto procesal; infundada, cuando no se prueba lo pedido. Bruno probó lo que pidió.' },
+    { id: 'f2', p: 'Restitución de la cámara a Bruno:', o: ['Se ordena', 'No se ordena'], ok: 0, why: 'El plazo venció y la donación de palabra no es válida: la cámara debe volver a su dueño.' },
+    { id: 'f3', p: 'Pago de la reparación (S/ 780):', o: ['Se ordena', 'No se ordena'], ok: 0, why: 'El daño está acreditado con la boleta, y Carla responde por el deterioro.' },
+    { id: 'f4', p: 'Daño moral por «tres semanas sin su cámara»:', o: ['Se concede', 'No se concede'], ok: 1, why: 'Bruno no lo pidió en su demanda: el juez no puede conceder más de lo pedido (congruencia procesal).' },
+    { id: 'f5', p: 'Costas y costos del proceso:', o: ['A cargo de Carla', 'A cargo de Bruno', 'Cada parte asume las suyas'], ok: 0, why: 'Por regla, las costas y costos los paga la parte vencida (CPC, art. 412).' }
+  ];
+  function f5() {
+    setStep(5);
+    var pick = {}, firstCheck = true;
+    show('<div class="reveal"><p class="phase">Fase 5 de 6 · La sentencia</p><h2>Redacta el fallo</h2>' +
+      '<p>Ya tienes todo. Elige cada punto de la parte resolutiva y comprueba.</p></div>' +
+      '<div class="fallo"><h3>Sentencia</h3><p class="sub">Exp. N.° 001-2026 · Salas c. Méndez · Restitución e indemnización</p>' +
+      '<p style="margin:0 0 1rem;font-size:.95rem"><b style="letter-spacing:.08em">SE RESUELVE:</b></p>' +
+      FALLO.map(function (f, i) { return '<div class="fline" id="' + f.id + '"><p><b>' + ['Primero', 'Segundo', 'Tercero', 'Cuarto', 'Quinto'][i] + '.</b> ' + f.p + '</p><div class="seg" role="group">' +
+        f.o.map(function (o, k) { return '<button type="button" data-f="' + f.id + '" data-k="' + k + '" aria-pressed="false">' + o + '</button>'; }).join('') + '</div><p class="why">' + f.why + '</p></div>'; }).join('') + '</div>' +
+      '<p class="hint" id="fhint" aria-live="polite"></p>' +
+      '<div class="acts" id="checkWrap"><button class="btn primary" id="check" disabled>Comprobar el fallo ' + ARROW + '</button></div>' +
+      '<div id="signWrap" hidden><p style="margin-top:1.2rem">Fallo correcto. Firma la sentencia como jueza:</p>' +
+      '<div class="sigbox" id="sigbox"><span class="line"></span><span class="ph">Firma aquí</span><canvas id="sig" aria-label="Recuadro de firma"></canvas><div class="stamp" id="stamp">SENTENCIA<br>FIRMADA</div></div>' +
+      '<div class="sigrow"><span class="small">La firma no se guarda en ningún lado.</span><button class="btn ghost" id="clear">Borrar</button></div>' +
+      '<div class="acts"><button class="btn primary" id="sign" disabled>Firmar y notificar ' + ARROW + '</button></div></div>', function () {
+        var check = document.getElementById('check'), hint = document.getElementById('fhint');
+        main.querySelectorAll('.seg button').forEach(function (b) {
+          b.onclick = function () {
+            if (main.querySelector('#signWrap:not([hidden])')) return;
+            var f = b.dataset.f; pick[f] = +b.dataset.k;
+            b.parentNode.querySelectorAll('button').forEach(function (x) { x.setAttribute('aria-pressed', x === b); });
+            document.getElementById(f).classList.remove('bad', 'good');
+            check.disabled = Object.keys(pick).length < FALLO.length;
+          };
+        });
+        check.onclick = function () {
+          var wrong = 0;
+          FALLO.forEach(function (f) {
+            var el = document.getElementById(f.id), ok = pick[f.id] === f.ok;
+            el.classList.remove('bad', 'good'); void el.offsetWidth; el.classList.add(ok ? 'good' : 'bad'); if (!ok) wrong++;
+            if (firstCheck) { totalChecks++; if (ok) firstTry++; }
+          });
+          firstCheck = false;
+          if (wrong) { hint.className = 'hint'; hint.textContent = wrong === 1 ? 'Hay un punto por corregir. Lee la observación en rojo.' : 'Hay ' + wrong + ' puntos por corregir. Lee las observaciones en rojo.'; return; }
+          hint.className = 'hint good'; hint.textContent = '';
+          document.getElementById('checkWrap').hidden = true;
+          var sw = document.getElementById('signWrap'); sw.hidden = false;
+          setTimeout(function () { sw.scrollIntoView({ behavior: REDUCED ? 'auto' : 'smooth', block: 'start' }); }, 100);
+          initSig(f6);
+        };
+      });
+  }
+  function initSig(after) {
+    var cv = document.getElementById('sig'), box = document.getElementById('sigbox'), btn = document.getElementById('sign'), ph = box.querySelector('.ph');
+    var ctx = cv.getContext('2d'), dpr = Math.min(window.devicePixelRatio || 1, 2), drawing = false, last = null, ink = 0, done = false;
+    function size() { var r = box.getBoundingClientRect(); cv.width = r.width * dpr; cv.height = r.height * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.lineCap = 'round'; ctx.lineJoin = 'round'; ctx.strokeStyle = '#1F2550'; ink = 0; btn.disabled = true; ph.style.opacity = 1; }
+    size();
+    function pt(e) { var r = cv.getBoundingClientRect(); return { x: e.clientX - r.left, y: e.clientY - r.top, t: performance.now() }; }
+    cv.addEventListener('pointerdown', function (e) { if (done) return; drawing = true; last = pt(e); cv.setPointerCapture(e.pointerId); ph.style.opacity = 0; e.preventDefault(); });
+    cv.addEventListener('pointermove', function (e) {
+      if (!drawing || done) return; var p = pt(e), d = Math.hypot(p.x - last.x, p.y - last.y); if (d < 1) return;
+      var v = d / Math.max(1, p.t - last.t); ctx.lineWidth = Math.max(1.4, 3.2 - v * 1.2);
+      ctx.beginPath(); ctx.moveTo(last.x, last.y); ctx.lineTo(p.x, p.y); ctx.stroke(); ink += d; last = p;
+      if (ink > 120) btn.disabled = false;
+    });
+    ['pointerup', 'pointercancel', 'pointerleave'].forEach(function (ev) { cv.addEventListener(ev, function () { drawing = false; }); });
+    document.getElementById('clear').onclick = function () { if (done) return; ctx.clearRect(0, 0, cv.width, cv.height); size(); };
+    window.addEventListener('resize', function () { if (!done) size(); });
+    btn.onclick = function () {
+      if (btn.disabled || done) return; done = true; btn.disabled = true;
+      document.getElementById('stamp').classList.add('on'); if (navigator.vibrate) navigator.vibrate(30);
+      setTimeout(after, REDUCED ? 200 : 1400);
+    };
+  }
+
+  /* ---------- 6 · Apelación ---------- */
+  function f6() {
+    phase(6, 'La apelación', 'Carla no se rinde',
+      '<div class="story"><p>Notificada la sentencia, Carla dice que «esto no se queda así».</p></div>',
+      ['q8'], function () {
+        setStep(6);
+        show('<div class="reveal"><p class="phase">Fase 6 de 6 · Segunda instancia</p><h2>La Sala Civil confirma la sentencia</h2>' +
+          '<div class="story"><p>La Sala revisa el expediente y confirma la decisión en todos sus extremos.</p><p>Bruno recupera su cámara, reparada y sin arena. Carla promete que la próxima vez alquilará una.</p></div>' +
+          '<div class="acts"><button class="btn primary" id="close">Archivar el expediente ' + ARROW + '</button></div></div>', function () {
+            document.getElementById('close').onclick = finish;
+          });
+      }, 'Ver la resolución');
+  }
+
+  /* ---------- Final: compuerta y contraseña ---------- */
+  function verdict() {
+    var r = firstTry / Math.max(1, totalChecks);
+    return r === 1 ? 'Con honores' : r >= .75 ? 'Sobresaliente' : r >= .5 ? 'Aprobada con buen criterio' : 'Aprobada (el juzgado valora la perseverancia)';
+  }
+  function finish() {
+    steps.forEach(function (s) { s.className = 'done'; });
+    var g = document.getElementById('gate');
+    var reveal = function () {
+      show('<div class="prize reveal">' + JUEZ +
+        '<p class="eyebrow">Expediente archivado</p>' +
+        '<h1>Caso cerrado.</h1>' +
+        '<span class="score">Aciertos al primer intento: ' + firstTry + ' de ' + totalChecks + ' · ' + verdict() + '</span>' +
+        '<p class="lead">El juzgado resuelve entregarte la contraseña del archivo.</p>' +
+        '<div class="keycard"><div class="lbl">Contraseña del archivo</div><div class="pw" id="pw">' + esc(CONFIG.password) + '</div>' +
+        '<button class="btn copy" id="copy">Copiar contraseña</button></div>' +
+        '<div class="acts"><a class="btn primary" href="' + esc(CONFIG.formUrl) + '" id="goForm">Ir al archivo ' + ARROW + '</a></div>' +
+        '<p class="small" style="margin-top:1rem">Guárdala por si sales y vuelves más tarde.</p></div>', function () {
+          document.getElementById('copy').onclick = function () {
+            var t = CONFIG.password;
+            (navigator.clipboard && navigator.clipboard.writeText ? navigator.clipboard.writeText(t) : Promise.reject()).then(function () { toast('Contraseña copiada'); }, function () {
+              var r = document.createRange(); r.selectNodeContents(document.getElementById('pw')); var s = getSelection(); s.removeAllRanges(); s.addRange(r); toast('Selecciónala y cópiala');
+            });
+          };
+        });
+    };
+    if (REDUCED) { reveal(); return; }
+    g.className = 'gate close';
+    setTimeout(function () { reveal(); g.className = 'gate open'; }, 1900);
+    setTimeout(function () { g.className = 'gate'; }, 3000);
+  }
+
+  intro();
+})();
+</script>
+</body>
+</html>
